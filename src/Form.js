@@ -31,9 +31,9 @@ class Form extends React.Component {
                 zipcode: "1421421"
             },
             name: '',
-            phone: '',
             email: '',
-            adress: '',
+            phone: '',
+            address: '',
             city: '',
             state: '',
             zipcode: ''
@@ -48,9 +48,9 @@ class Form extends React.Component {
         this.setState({
             newcontact: {
                 name: this.state.name,
-                phone: this.state.phone,
                 email: this.state.email,
-                adress: this.state.adress,
+                phone: this.state.phone,
+                address: this.state.address,
                 city: this.state.city,
                 state: this.state.state,
                 zipcode: this.state.zipcode,
@@ -59,7 +59,7 @@ class Form extends React.Component {
             console.log('form submitted ' + this.state.newcontact.name, this.state.newcontact.phone,
             this.state.newcontact.phone,
             this.state.newcontact.email,
-            this.state.newcontact.adress,
+            this.state.newcontact.address,
             this.state.newcontact.city );
 
             let tempContacts = this.state.allContacts;
@@ -80,7 +80,7 @@ class Form extends React.Component {
 
         let constactList = this.state.allContacts.map(contact =>{
 
-            return <li key={contact.name}>{contact.name}</li>
+            return <p key={contact.name}>{contact.name} {contact.email}</p>
         })
         const { classes } = this.props;
 
@@ -95,27 +95,27 @@ class Form extends React.Component {
             </FormControl>
             <FormControl className={classes.formControl} aria-describedby="name-helper-text">
                 <InputLabel htmlFor="name-helper">Email</InputLabel>
-                <Input id="name-helper" onChange={this.handleChange} />
+                <Input id="name-helper" onChange={e => this.setState({email: e.target.value} )} />
             </FormControl>
             <FormControl className={classes.formControl} >
                 <InputLabel htmlFor="name-simple">Phone Number</InputLabel>
-                <Input id="name-simple" onChange={this.handleChange} />
+                <Input id="name-simple" onChange={e => this.setState({phone: e.target.value} )} />
             </FormControl>
             <FormControl className={classes.formControl} >
-                <InputLabel htmlFor="name-simple">Adress</InputLabel>
-                <Input id="name-simple" onChange={this.handleChange} />
+                <InputLabel htmlFor="name-simple">Address</InputLabel>
+                <Input id="name-simple" onChange={e => this.setState({address: e.target.value} )} />
             </FormControl>
             <FormControl className={classes.formControl} >
                 <InputLabel htmlFor="name-simple">City</InputLabel>
-                <Input id="name-simple" onChange={this.handleChange} />
+                <Input id="name-simple" onChange={e => this.setState({city: e.target.value} )} />
             </FormControl>
             <FormControl className={classes.formControl} >
                 <InputLabel htmlFor="name-simple">State</InputLabel>
-                <Input id="name-simple" onChange={this.handleChange} />
+                <Input id="name-simple" onChange={e => this.setState({state: e.target.value} )} />
             </FormControl>
             <FormControl className={classes.formControl} >
                 <InputLabel htmlFor="name-simple">Zip Code</InputLabel>
-                <Input id="name-simple" onChange={this.handleChange} />
+                <Input id="name-simple" onChange={e => this.setState({zipcode: e.target.value} )} />
             </FormControl>
             <br />
             <Button type="submit" value="submit" variant="contained" onClick={this.handleSubmit.bind(this)} className={classes.button} style={{marginTop: '20px'}}>
